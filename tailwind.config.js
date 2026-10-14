@@ -15,8 +15,8 @@ export default {
         surface: 'var(--brand-card)',
       },
       fontFamily: {
-        sans: ['SF UI Display', 'sans-serif'],
-        display: ['Bang Tamvan', 'SF UI Display', 'sans-serif'],
+        sans: ['SF UI Display'],
+        display: ['Bang Tamvan', 'SF UI Display'],
       },
       boxShadow: {
         soft: '0 18px 60px rgba(28, 31, 42, 0.10)',
