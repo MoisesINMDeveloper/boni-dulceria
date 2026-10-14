@@ -1,5 +1,5 @@
 import { Home, MessageCircle, ShoppingBag, UtensilsCrossed } from 'lucide-react'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import CartDrawer from './components/CartDrawer.jsx'
 import Footer from './components/Footer.jsx'
 import Hero from './components/Hero.jsx'
@@ -15,8 +15,33 @@ export default function App() {
   )
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [activeMobileSection, setActiveMobileSection] = useState('inicio')
   const cart = cartsByBranch[branchId]
   const branchName = branches.find((branch) => branch.id === branchId).name
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const markerY = Math.min(150, window.innerHeight * 0.22)
+      const nextSection = ['inicio', 'menu'].find((id) => {
+        const section = document.getElementById(id)
+        if (!section) return false
+        const { top, bottom } = section.getBoundingClientRect()
+        return top <= markerY && bottom > markerY
+      }) || null
+
+      setActiveMobileSection((currentSection) =>
+        currentSection === nextSection ? currentSection : nextSection,
+      )
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
+  }, [])
 
   const changeQuantity = useCallback((productId, quantity) => {
     setCartsByBranch((current) => ({
@@ -122,11 +147,19 @@ export default function App() {
         <MessageCircle size={25} />
       </a>
       <nav aria-label="Navegación móvil" className="mobile-tabbar">
-        <a href="#inicio" className="mobile-tab">
+        <a
+          href="#inicio"
+          className={`mobile-tab${activeMobileSection === 'inicio' ? ' is-active' : ''}`}
+          aria-current={activeMobileSection === 'inicio' ? 'location' : undefined}
+        >
           <Home size={20} strokeWidth={1.8} />
           <span>Inicio</span>
         </a>
-        <a href="#menu" className="mobile-tab">
+        <a
+          href="#menu"
+          className={`mobile-tab${activeMobileSection === 'menu' ? ' is-active' : ''}`}
+          aria-current={activeMobileSection === 'menu' ? 'location' : undefined}
+        >
           <UtensilsCrossed size={20} strokeWidth={1.8} />
           <span>Menú</span>
         </a>

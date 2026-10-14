@@ -1297,8 +1297,7 @@ a {
     font-weight: 600;
   }
 
-  .mobile-tab:first-child,
-  .mobile-tab:nth-child(2) {
+  .mobile-tab.is-active {
     color: var(--brand-accent);
   }
 
