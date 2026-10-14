@@ -1236,13 +1236,13 @@ a {
 
   .product-info > div:first-child {
     display: flex;
-    align-items: flex-start;
-    gap: 6px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
   }
 
   .product-info h3 {
-    min-width: 0;
-    flex: 1;
+    width: 100%;
     min-height: 34px;
     font-family: 'SF UI Display';
     font-size: 12px;
@@ -1257,8 +1257,8 @@ a {
 
   .product-info > div:first-child > span {
     display: block;
-    flex-shrink: 0;
-    padding-top: 1px;
+    align-self: flex-end;
+    padding-top: 0;
     font-size: 13px;
     text-align: right;
     white-space: nowrap;
