@@ -1,11 +1,18 @@
 import { Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { getWhatsAppUrl } from '../data/contact.js'
+import { formatBcvDate, formatBolivares } from '../data/exchangeRate.js'
 
 const money = (value) => `$${value.toFixed(2)}`
 
-export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, onRemove, total, branchName }) {
+export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, onRemove, total, branchName, bcvRate }) {
   const [deliveryNote, setDeliveryNote] = useState('')
+  const moneyInBolivares = (amount) =>
+    bcvRate.value ? formatBolivares(amount * bcvRate.value) : null
+  const formatPrice = (amount) => {
+    const bolivares = moneyInBolivares(amount)
+    return bolivares ? `${money(amount)} / ${bolivares}` : money(amount)
+  }
 
   useEffect(() => {
     if (!isOpen) return undefined
@@ -27,14 +34,17 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
 
     const lines = cart.map(
       ({ product, quantity }) =>
-        `- ${quantity}x ${product.name} (${money(product.price)} c/u) = ${money(product.price * quantity)}`,
+        `- ${quantity}x ${product.name} (${formatPrice(product.price)} c/u) = ${formatPrice(product.price * quantity)}`,
     )
     const message = [
       `¡Hola, Boni Dulcería! 🥐☕ Quiero hacer un pedido para la sede ${branchName}:`,
       '',
       ...lines,
       '-------------------',
-      `💰 Total a pagar: ${money(total)}`,
+      `💰 Total a pagar: ${formatPrice(total)}`,
+      ...(bcvRate.value
+        ? [`Tasa BCV: 1 USD = ${formatBolivares(bcvRate.value)} · ${formatBcvDate(bcvRate.date)} · Al Cambio${bcvRate.status === 'error' ? ' (última tasa disponible)' : ''}`]
+        : []),
       `📍 Dirección de Delivery / Nota: ${deliveryNote.trim() || 'Por confirmar'}`,
       '¡Quedo atento/a!',
     ].join('\n')
@@ -94,9 +104,17 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
                   <div className="min-w-0 flex-1">
                     <div className="flex justify-between gap-2">
                       <h3 className="font-display text-[16px] leading-snug text-cocoa">{product.name}</h3>
-                      <span className="shrink-0 text-sm font-bold text-cocoa">{money(product.price * quantity)}</span>
+                      <span className="cart-item-total shrink-0 text-sm font-bold text-cocoa">
+                        {money(product.price * quantity)}
+                        {moneyInBolivares(product.price * quantity) && (
+                          <small>{moneyInBolivares(product.price * quantity)}</small>
+                        )}
+                      </span>
                     </div>
-                    <p className="mt-1 text-[11px] text-cocoa/55">{money(product.price)} por unidad</p>
+                    <p className="mt-1 text-[11px] text-cocoa/55">
+                      {money(product.price)} por unidad
+                      {moneyInBolivares(product.price) && ` · ${moneyInBolivares(product.price)} c/u`}
+                    </p>
                     <div className="mt-3 flex items-center gap-3">
                       <div className="flex h-8 items-center rounded-full border border-cocoa/15">
                         <button
@@ -133,8 +151,19 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
             <div className="border-t border-cocoa/10 bg-surface px-6 pb-7 pt-5">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-cocoa/65">Total del pedido</span>
-                <span className="font-display text-2xl font-semibold text-cocoa">{money(total)}</span>
+                <span className="cart-order-total font-display text-2xl font-semibold text-cocoa">
+                  {money(total)}
+                  {moneyInBolivares(total) && <small>{moneyInBolivares(total)}</small>}
+                </span>
               </div>
+              <p className={`cart-rate-note${bcvRate.status === 'error' ? ' is-error' : ''}`} role="status">
+                {bcvRate.value
+                  ? `1 USD = ${formatBolivares(bcvRate.value)} · BCV ${formatBcvDate(bcvRate.date)}${bcvRate.status === 'error' ? ' · tasa anterior' : ''}`
+                  : bcvRate.status === 'loading'
+                    ? 'Consultando tasa BCV…'
+                    : 'Tasa BCV no disponible; total expresado en USD.'}{' '}
+                <a href="https://alcambio.app/" target="_blank" rel="noreferrer">Al Cambio</a>
+              </p>
               <label htmlFor="delivery-note" className="mt-4 block text-[11px] font-semibold text-cocoa/70">
                 Dirección de delivery o nota
               </label>

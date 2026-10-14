@@ -1,6 +1,7 @@
 import { ArrowLeft, Check, Clock3, Minus, Plus, ShoppingBag, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { formatBolivares } from '../data/exchangeRate.js'
 
 const money = (value) => `$${value.toFixed(2)}`
 
@@ -27,7 +28,7 @@ function QuantityControl({ quantity, onChange, label }) {
   )
 }
 
-export default function ProductDetailModal({ product, quantityInCart, onClose, onConfirm }) {
+export default function ProductDetailModal({ product, quantityInCart, bcvRate, onClose, onConfirm }) {
   const [quantity, setQuantity] = useState(quantityInCart || 1)
 
   useEffect(() => {
@@ -85,7 +86,10 @@ export default function ProductDetailModal({ product, quantityInCart, onClose, o
             <p className="detail-category">{product.category}</p>
             <div className="detail-title-row">
               <h2 id="product-detail-title">{product.name}</h2>
-              <span className="detail-price">{money(product.price)}</span>
+              <span className="detail-price">
+                {money(product.price)}
+                {bcvRate.value && <small>{formatBolivares(product.price * bcvRate.value)}</small>}
+              </span>
             </div>
             <p className="detail-description">{product.detail || product.description}</p>
 

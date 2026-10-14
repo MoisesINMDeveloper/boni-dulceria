@@ -1,9 +1,10 @@
 import { ArrowDownWideNarrow, ChevronDown, SlidersHorizontal } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { categories, products } from '../data/products.js'
+import { formatBcvDate, formatBolivares } from '../data/exchangeRate.js'
 import ProductDetailModal from './ProductDetailModal.jsx'
 
-function ProductCard({ product, onAdd, onOpenDetails }) {
+function ProductCard({ product, bcvRate, onAdd, onOpenDetails }) {
   return (
     <article
       className="product-card group overflow-hidden rounded-[18px] border border-cocoa/[0.07] bg-surface transition duration-300 hover:-translate-y-1 hover:shadow-soft"
@@ -43,7 +44,10 @@ function ProductCard({ product, onAdd, onOpenDetails }) {
               {product.name}
             </button>
           </h3>
-          <span className="shrink-0 pt-1 text-sm font-bold text-cocoa">${product.price.toFixed(2)}</span>
+          <span className="product-card-price shrink-0 pt-1 text-sm font-bold text-cocoa">
+            <span>${product.price.toFixed(2)}</span>
+            {bcvRate.value && <small>{formatBolivares(product.price * bcvRate.value)}</small>}
+          </span>
         </div>
         <p className="mt-2 min-h-[42px] text-[12px] leading-[1.7] text-cocoa/60">{product.description}</p>
         <button
@@ -58,7 +62,7 @@ function ProductCard({ product, onAdd, onOpenDetails }) {
   )
 }
 
-export default function MenuSection({ branchId, onAdd, onSetQuantity, quantities, searchQuery }) {
+export default function MenuSection({ branchId, bcvRate, onAdd, onSetQuantity, quantities, searchQuery }) {
   const [activeCategory, setActiveCategory] = useState('Todos')
   const [sortOrder, setSortOrder] = useState('featured')
   const [selectedProduct, setSelectedProduct] = useState(null)
@@ -151,11 +155,27 @@ export default function MenuSection({ branchId, onAdd, onSetQuantity, quantities
             </label>
           </div>
         </div>
+        <p className={`exchange-rate-note${bcvRate.status === 'error' ? ' is-error' : ''}`} role="status">
+          {bcvRate.value ? (
+            <>
+              1 USD = {formatBolivares(bcvRate.value)} · BCV {formatBcvDate(bcvRate.date)}
+              {bcvRate.status === 'error' && ' · Tasa anterior; no se pudo actualizar'}
+            </>
+          ) : bcvRate.status === 'loading' ? (
+            'Consultando tasa oficial BCV…'
+          ) : (
+            'Tasa BCV no disponible; se muestran precios en USD.'
+          )}{' '}
+          <a href="https://alcambio.app/" target="_blank" rel="noreferrer">
+            Al Cambio
+          </a>
+        </p>
         <div className="product-grid mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visibleProducts.length > 0 ? visibleProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
+              bcvRate={bcvRate}
               onAdd={onAdd}
               onOpenDetails={setSelectedProduct}
             />
@@ -170,6 +190,7 @@ export default function MenuSection({ branchId, onAdd, onSetQuantity, quantities
         <ProductDetailModal
           product={selectedProduct}
           quantityInCart={quantities[selectedProduct.id] || 0}
+          bcvRate={bcvRate}
           onClose={() => setSelectedProduct(null)}
           onConfirm={onSetQuantity}
         />

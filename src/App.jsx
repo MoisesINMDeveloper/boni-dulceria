@@ -6,6 +6,7 @@ import Hero from './components/Hero.jsx'
 import MenuSection from './components/MenuSection.jsx'
 import Navbar from './components/Navbar.jsx'
 import { getWhatsAppUrl } from './data/contact.js'
+import { fetchBcvUsdRate } from './data/exchangeRate.js'
 import { branches } from './data/products.js'
 
 export default function App() {
@@ -16,8 +17,48 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeMobileSection, setActiveMobileSection] = useState('inicio')
+  const [bcvRate, setBcvRate] = useState({
+    value: null,
+    date: null,
+    status: 'loading',
+    error: null,
+  })
   const cart = cartsByBranch[branchId]
   const branchName = branches.find((branch) => branch.id === branchId).name
+
+  useEffect(() => {
+    let isMounted = true
+    let controller
+
+    const refreshRate = async () => {
+      controller?.abort()
+      controller = new AbortController()
+
+      try {
+        const { value, date } = await fetchBcvUsdRate(controller.signal)
+        if (isMounted) setBcvRate({ value, date, status: 'ready', error: null })
+      } catch (error) {
+        if (!isMounted || error.name === 'AbortError') return
+        console.error('No se pudo actualizar la tasa oficial BCV desde Al Cambio.', error)
+        setBcvRate((current) => ({
+          ...current,
+          status: 'error',
+          error: 'No se pudo actualizar la tasa BCV.',
+        }))
+      }
+    }
+
+    void refreshRate()
+    const refreshInterval = window.setInterval(refreshRate, 30 * 60 * 1000)
+    window.addEventListener('online', refreshRate)
+
+    return () => {
+      isMounted = false
+      window.clearInterval(refreshInterval)
+      window.removeEventListener('online', refreshRate)
+      controller?.abort()
+    }
+  }, [])
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -130,6 +171,7 @@ export default function App() {
         <Hero branchId={branchId} branchName={branchName} />
         <MenuSection
           branchId={branchId}
+          bcvRate={bcvRate}
           onAdd={addToCart}
           onSetQuantity={setProductQuantity}
           quantities={quantities}
@@ -183,6 +225,7 @@ export default function App() {
         onRemove={removeFromCart}
         total={total}
         branchName={branchName}
+        bcvRate={bcvRate}
       />
     </>
   )
