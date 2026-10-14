@@ -947,18 +947,12 @@ a {
   text-align: right;
 }
 
-.exchange-rate-note,
 .cart-rate-note {
   color: rgb(28 31 42 / 62%);
   font-size: 11px;
   line-height: 1.5;
 }
 
-.exchange-rate-note {
-  margin-top: 13px;
-}
-
-.exchange-rate-note a,
 .cart-rate-note a {
   color: var(--brand-accent);
   font-weight: 700;
@@ -966,7 +960,6 @@ a {
   text-underline-offset: 2px;
 }
 
-.exchange-rate-note.is-error,
 .cart-rate-note.is-error {
   color: #895c31;
 }

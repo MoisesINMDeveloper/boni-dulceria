@@ -1,7 +1,7 @@
 import { ArrowDownWideNarrow, ChevronDown, SlidersHorizontal } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { categories, products } from '../data/products.js'
-import { formatBcvDate, formatBolivares } from '../data/exchangeRate.js'
+import { formatBolivares } from '../data/exchangeRate.js'
 import ProductDetailModal from './ProductDetailModal.jsx'
 
 function ProductCard({ product, bcvRate, onAdd, onOpenDetails }) {
@@ -155,21 +155,6 @@ export default function MenuSection({ branchId, bcvRate, onAdd, onSetQuantity, q
             </label>
           </div>
         </div>
-        <p className={`exchange-rate-note${bcvRate.status === 'error' ? ' is-error' : ''}`} role="status">
-          {bcvRate.value ? (
-            <>
-              1 USD = {formatBolivares(bcvRate.value)} · BCV {formatBcvDate(bcvRate.date)}
-              {bcvRate.status === 'error' && ' · Tasa anterior; no se pudo actualizar'}
-            </>
-          ) : bcvRate.status === 'loading' ? (
-            'Consultando tasa oficial BCV…'
-          ) : (
-            'Tasa BCV no disponible; se muestran precios en USD.'
-          )}{' '}
-          <a href="https://alcambio.app/" target="_blank" rel="noreferrer">
-            Al Cambio
-          </a>
-        </p>
         <div className="product-grid mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visibleProducts.length > 0 ? visibleProducts.map((product) => (
             <ProductCard
