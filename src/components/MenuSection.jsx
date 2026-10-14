@@ -6,7 +6,7 @@ import ProductDetailModal from './ProductDetailModal.jsx'
 function ProductCard({ product, onAdd, onOpenDetails }) {
   return (
     <article
-      className="product-card group overflow-hidden rounded-[18px] border border-cocoa/[0.07] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-soft"
+      className="product-card group overflow-hidden rounded-[18px] border border-cocoa/[0.07] bg-surface transition duration-300 hover:-translate-y-1 hover:shadow-soft"
       onClick={(event) => {
         if (!event.target.closest('button')) onOpenDetails(product)
       }}
@@ -160,7 +160,7 @@ export default function MenuSection({ branchId, onAdd, onSetQuantity, quantities
               onOpenDetails={setSelectedProduct}
             />
           )) : (
-            <p className="col-span-full rounded-2xl bg-white px-5 py-10 text-center text-sm text-cocoa/60">
+            <p className="col-span-full rounded-2xl bg-surface px-5 py-10 text-center text-sm text-cocoa/60">
               No encontramos productos con ese nombre. Prueba otra búsqueda.
             </p>
           )}

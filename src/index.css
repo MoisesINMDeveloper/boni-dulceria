@@ -50,6 +50,7 @@
   --brand-sand: #BCA786;
   --brand-taupe: #927D63;
   --brand-espresso: #332C26;
+  --brand-card: #F3F1EA;
   color: var(--brand-primary);
   background: var(--brand-light);
   font-family: 'SF UI Display', sans-serif;
@@ -815,7 +816,7 @@ a {
   align-items: center;
   gap: 14px;
   border-top: 1px solid rgb(28 31 42 / 8%);
-  background: #fff;
+  background: var(--brand-card);
   padding: 16px 24px;
 }
 

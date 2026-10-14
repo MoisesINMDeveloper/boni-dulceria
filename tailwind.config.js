@@ -12,6 +12,7 @@ export default {
         brass: '#BC9869',
         taupe: '#927D63',
         espresso: '#332C26',
+        surface: 'var(--brand-card)',
       },
       fontFamily: {
         sans: ['SF UI Display', 'sans-serif'],

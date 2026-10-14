@@ -11,10 +11,7 @@ export default function Navbar({ branchId, onChangeBranch, cartCount, onOpenCart
       >
         <div className="flex items-center justify-between">
           <a href="#inicio" className="group flex items-center gap-3" aria-label="Boni Dulcería, inicio">
-            <BrandLogo
-              useMobileLogo
-              className="w-[60px] transition-transform duration-200 group-hover:scale-[1.02] md:w-[176px]"
-            />
+            <BrandLogo className="w-[112px] transition-transform duration-200 group-hover:scale-[1.02] md:w-[176px]" />
           </a>
 
           <BranchSelector

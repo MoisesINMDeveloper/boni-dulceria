@@ -1,10 +1,8 @@
 import logo from '../assets/boni-horizontal.png'
-import mobileLogo from '../assets/boni-mobile.png'
 
-export default function BrandLogo({ className = '', useMobileLogo = false }) {
+export default function BrandLogo({ className = '' }) {
   return (
     <picture className={`brand-logo-frame ${className}`}>
-      {useMobileLogo && <source media="(max-width: 767px)" srcSet={mobileLogo} />}
       <img
         src={logo}
         alt="Boni Dulcería · Postres y tortas"
