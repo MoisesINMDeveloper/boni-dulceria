@@ -4,7 +4,7 @@ import BranchSelector from './BranchSelector.jsx'
 
 export default function Navbar({ branchId, onChangeBranch, cartCount, onOpenCart, onSearch }) {
   return (
-    <header className="app-header fixed inset-x-0 top-0 z-40 border-b border-cocoa/5 bg-cream">
+    <header className="app-header fixed inset-x-0 top-0 z-40 border-b border-cocoa/5 bg-cream/85 backdrop-blur-lg">
       <nav
         aria-label="Navegación principal"
         className="mx-auto flex max-w-7xl flex-col justify-center gap-2 px-4 py-3 sm:px-8 md:h-[76px] md:flex-row md:items-center md:justify-between         md:gap-0 md:py-0"

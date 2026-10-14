@@ -56,7 +56,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
         role="dialog"
         aria-modal="true"
         aria-labelledby="cart-title"
-        className="drawer-panel absolute inset-y-0 right-0 flex w-full max-w-[460px] flex-col bg-cream shadow-2xl"
+        className="drawer-panel absolute inset-y-0 right-0 flex w-full max-w-[460px] flex-col bg-surface shadow-2xl"
       >
         <div className="flex items-center justify-between border-b border-cocoa/10 px-6 py-5">
           <div>
@@ -130,7 +130,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
                 </div>
               ))}
             </div>
-            <div className="border-t border-cocoa/10 bg-white/70 px-6 pb-7 pt-5">
+            <div className="border-t border-cocoa/10 bg-surface px-6 pb-7 pt-5">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-cocoa/65">Total del pedido</span>
                 <span className="font-display text-2xl font-semibold text-cocoa">{money(total)}</span>

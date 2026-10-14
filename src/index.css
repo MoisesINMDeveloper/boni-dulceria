@@ -65,10 +65,10 @@ body {
 }
 
 .app-header {
-  background-color: var(--brand-card);
+  background-color: rgb(243 241 234 / 82%);
   background-image: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 }
 
 .menu-section {
@@ -704,6 +704,7 @@ a {
   min-height: 0;
   grid-template-columns: 1fr 1fr;
   overflow-y: auto;
+  background: var(--brand-card);
 }
 
 .product-detail-image {
