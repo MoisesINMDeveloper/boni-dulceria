@@ -10,8 +10,8 @@ export default {
         latte: '#EDE2D5',
       },
       fontFamily: {
-        sans: ['Manrope', 'sans-serif'],
-        display: ['Fraunces', 'serif'],
+        sans: ['SF UI Display', 'sans-serif'],
+        display: ['Bang Tamvan', 'SF UI Display', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 18px 60px rgba(60, 42, 33, 0.10)',

@@ -1,5 +1,6 @@
 import { Instagram, MapPin, MessageCircle } from 'lucide-react'
 import { getWhatsAppUrl } from '../data/contact.js'
+import BrandLogo from './BrandLogo.jsx'
 
 export default function Footer() {
   return (
@@ -22,7 +23,9 @@ export default function Footer() {
       <footer id="contacto" className="border-t border-cocoa/10 bg-[#f6f0e9] px-5 py-14 sm:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
-            <a href="#inicio" className="font-display text-2xl font-semibold text-cocoa">Boni Dulcería</a>
+            <a href="#inicio" aria-label="Boni Dulcería, inicio">
+              <BrandLogo className="w-[178px]" />
+            </a>
             <p className="mt-3 max-w-xs text-xs leading-6 text-cocoa/60">Una pausa bonita, café en mano y algo dulce para el camino.</p>
           </div>
           <div>

@@ -1,10 +1,50 @@
 @import 'tailwindcss';
 @config '../tailwind.config.js';
 
+@font-face {
+  font-family: 'Bang Tamvan';
+  src: url('./typographics/Bang-Tamvan-102597710/Bang Tamvan.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('./typographics/sf-ui-display-cufonfonts/sf-ui-display-medium-58646be638f96.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('./typographics/sf-ui-display-cufonfonts/sf-ui-display-semibold-58646eddcae92.otf') format('opentype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('./typographics/sf-ui-display-cufonfonts/sf-ui-display-bold-58646a511e3d9.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  src: url('./typographics/sf-ui-display-cufonfonts/sf-ui-display-heavy-586470160b9e5.otf') format('opentype');
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+}
+
 :root {
   color: #3c2a21;
   background: #fffbf7;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'SF UI Display', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
@@ -31,6 +71,19 @@ a {
   font-size: 12px;
   font-weight: 600;
   transition: color 180ms ease;
+}
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand-logo-frame {
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
 }
 
 .nav-link::after {
@@ -231,7 +284,7 @@ a {
 
 .featured-copy h2 {
   margin-top: 8px;
-  font-family: 'Fraunces', serif;
+  font-family: 'Bang Tamvan', 'SF UI Display', sans-serif;
   font-size: clamp(34px, 4.2vw, 56px);
   font-weight: 600;
   letter-spacing: -0.045em;
@@ -354,7 +407,7 @@ a {
 
 .section-title {
   color: #3c2a21;
-  font-family: 'Fraunces', serif;
+  font-family: 'Bang Tamvan', 'SF UI Display', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.65rem);
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -666,7 +719,7 @@ a {
 .detail-title-row h2 {
   margin: 0;
   color: #3c2a21;
-  font-family: 'Fraunces', serif;
+  font-family: 'Bang Tamvan', 'SF UI Display', sans-serif;
   font-size: clamp(25px, 3vw, 36px);
   letter-spacing: -0.04em;
   line-height: 1.06;
@@ -857,7 +910,7 @@ a {
 
 .product-name-button {
   text-align: left;
-  font-family: 'Manrope', sans-serif;
+  font-family: 'SF UI Display', sans-serif;
   font-size: inherit;
   font-weight: 700;
 }
@@ -1144,14 +1197,14 @@ a {
 
   .product-info h3 {
     min-height: 34px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'SF UI Display', sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 1.35;
   }
 
   .product-name-button {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'SF UI Display', sans-serif;
     font-size: inherit;
   }
 
