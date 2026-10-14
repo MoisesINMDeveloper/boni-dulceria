@@ -192,7 +192,7 @@ export default function Hero({ branchId, branchName }) {
           />
         </div>
       </div>
-      <div className="absolute -left-36 top-36 -z-10 h-96 w-96 rounded-full bg-[#ead8c5]/30 blur-3xl" />
+      <div className="absolute -left-36 top-36 -z-10 h-96 w-96 rounded-full bg-brass/20 blur-3xl" />
       <div className="mx-auto grid min-h-[690px] max-w-7xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.93fr_1.07fr] lg:gap-12 lg:py-20">
         <div className="desktop-hero-copy relative z-10 max-w-xl py-8">
           <p className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-caramel">

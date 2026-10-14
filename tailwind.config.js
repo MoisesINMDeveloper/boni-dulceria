@@ -4,17 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#FFFBF7',
-        cocoa: '#3C2A21',
-        caramel: '#B86B3B',
-        latte: '#EDE2D5',
+        cream: '#DBDBD3',
+        cocoa: '#1C1F2A',
+        caramel: '#B35718',
+        latte: '#BCA786',
+        rose: '#CC8189',
+        brass: '#BC9869',
+        taupe: '#927D63',
+        espresso: '#332C26',
       },
       fontFamily: {
         sans: ['SF UI Display', 'sans-serif'],
         display: ['Bang Tamvan', 'SF UI Display', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 18px 60px rgba(60, 42, 33, 0.10)',
+        soft: '0 18px 60px rgba(28, 31, 42, 0.10)',
       },
     },
   },

@@ -93,7 +93,7 @@ export default function MenuSection({ branchId, onAdd, onSetQuantity, quantities
     })
 
   return (
-    <section id="menu" className="menu-section bg-[#f6f0e9] px-5 py-24 sm:px-8 sm:py-28">
+    <section id="menu" className="menu-section bg-cream px-5 py-24 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="menu-heading">
           <div className="menu-intro">

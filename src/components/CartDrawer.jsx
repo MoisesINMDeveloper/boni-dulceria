@@ -150,7 +150,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
               <button
                 type="button"
                 onClick={checkout}
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-[#287a4b] px-5 py-4 text-sm font-semibold text-white transition hover:bg-[#20653d]"
+                className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-caramel px-5 py-4 text-sm font-semibold text-white transition hover:bg-taupe"
               >
                 Finalizar pedido por WhatsApp
               </button>

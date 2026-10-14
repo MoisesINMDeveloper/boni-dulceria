@@ -117,7 +117,7 @@ export default function App() {
         target="_blank"
         rel="noreferrer"
         aria-label="Escríbenos por WhatsApp"
-        className="fixed bottom-5 right-5 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-[#287a4b] text-white shadow-[0_8px_26px_rgba(40,122,75,0.35)] transition hover:scale-105 hover:bg-[#20653d] sm:flex sm:bottom-7 sm:right-7"
+        className="fixed bottom-5 right-5 z-30 hidden h-14 w-14 items-center justify-center rounded-full bg-caramel text-white shadow-[0_8px_26px_rgba(179,87,24,0.28)] transition hover:scale-105 hover:bg-taupe sm:flex sm:bottom-7 sm:right-7"
       >
         <MessageCircle size={25} />
       </a>
