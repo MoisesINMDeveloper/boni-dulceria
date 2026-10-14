@@ -64,6 +64,35 @@ body {
   min-width: 320px;
 }
 
+.app-header {
+  background-color: var(--brand-card);
+  background-image: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.menu-section {
+  background-color: #fff;
+}
+
+.product-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.product-grid::before {
+  position: absolute;
+  z-index: -1;
+  inset: -18px -12px;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 16% 16%, rgb(179 87 24 / 12%), transparent 54%),
+    radial-gradient(ellipse at 82% 72%, rgb(188 152 105 / 17%), transparent 57%);
+  content: '';
+  filter: blur(24px);
+  pointer-events: none;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
