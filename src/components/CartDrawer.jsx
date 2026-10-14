@@ -34,7 +34,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
 
     const lines = cart.map(
       ({ product, quantity }) =>
-        `- ${quantity}x ${product.name} (${formatPrice(product.price)} c/u) = ${formatPrice(product.price * quantity)}`,
+        `- ${quantity}x ${product.name} = ${formatPrice(product.price * quantity)}`,
     )
     const message = [
       `¡Hola, Boni Dulcería! 🥐☕ Quiero hacer un pedido para la sede ${branchName}:`,
