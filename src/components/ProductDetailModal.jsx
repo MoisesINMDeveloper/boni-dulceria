@@ -1,5 +1,6 @@
 import { ArrowLeft, Check, Clock3, Minus, Plus, ShoppingBag, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 const money = (value) => `$${value.toFixed(2)}`
 
@@ -52,7 +53,7 @@ export default function ProductDetailModal({ product, quantityInCart, onClose, o
     onClose()
   }
 
-  return (
+  return createPortal(
     <div className="product-modal-layer">
       <button
         type="button"
@@ -118,6 +119,7 @@ export default function ProductDetailModal({ product, quantityInCart, onClose, o
           </button>
         </div>
       </section>
-    </div>
+    </div>,
+    document.body,
   )
 }
