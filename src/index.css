@@ -1235,10 +1235,14 @@ a {
   }
 
   .product-info > div:first-child {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
   }
 
   .product-info h3 {
+    min-width: 0;
+    flex: 1;
     min-height: 34px;
     font-family: 'SF UI Display';
     font-size: 12px;
@@ -1253,8 +1257,11 @@ a {
 
   .product-info > div:first-child > span {
     display: block;
-    padding-top: 4px;
+    flex-shrink: 0;
+    padding-top: 1px;
     font-size: 13px;
+    text-align: right;
+    white-space: nowrap;
   }
 
   .product-info > p {
