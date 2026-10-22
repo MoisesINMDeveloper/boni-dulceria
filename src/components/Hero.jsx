@@ -192,32 +192,32 @@ export default function Hero({ branchId, branchName }) {
           />
         </div>
       </div>
-      <div className="absolute -left-36 top-36 -z-10 h-96 w-96 rounded-full bg-brass/20 blur-3xl" />
+      <div className="absolute -left-36 top-36 -z-10 h-96 w-96 rounded-full bg-brass/20 blur-3xl dark:bg-black/40" />
       <div className="mx-auto grid min-h-[690px] max-w-7xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.93fr_1.07fr] lg:gap-12 lg:py-20">
         <div className="desktop-hero-copy relative z-10 max-w-xl py-8">
-          <p className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-caramel">
-            <span className="h-px w-8 bg-caramel" />
+          <p className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.24em] text-caramel dark:text-brand-accent">
+            <span className="h-px w-8 bg-caramel dark:bg-brand-accent" />
             Hecho despacio, para disfrutar
           </p>
-          <h1 className="font-display text-[clamp(3.35rem,7.1vw,6.3rem)] leading-[0.99] tracking-[-0.045em] text-cocoa">
+          <h1 className="font-display text-[clamp(3.35rem,7.1vw,6.3rem)] leading-[0.99] tracking-[-0.045em] text-cocoa dark:text-white">
             Un rincón
             <br />
-            <span className="italic text-caramel">dulce</span> en tu día.
+            <span className="italic text-caramel dark:text-brand-accent">dulce</span> en tu día.
           </h1>
-          <p className="mt-7 max-w-md text-[15px] leading-7 text-cocoa/70 sm:text-base">
+          <p className="mt-7 max-w-md text-[15px] leading-7 text-cocoa/70 sm:text-base dark:text-white/70">
             Café recién preparado, tortas hechas con cariño y pequeños antojos que convierten cualquier momento en uno especial.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-5">
-            <a href="#menu" className="inline-flex h-13 items-center gap-3 rounded-full bg-cocoa px-7 py-4 text-sm font-semibold text-white transition hover:bg-caramel">
+            <a href="#menu" className="inline-flex h-13 items-center gap-3 rounded-full bg-cocoa px-7 py-4 text-sm font-semibold text-white transition hover:bg-caramel dark:bg-white dark:text-black dark:hover:bg-brand-accent">
               Descubrir el menú <ArrowUpRight size={17} />
             </a>
-            <a href="#nosotros" className="text-sm font-semibold text-cocoa/70 transition hover:text-caramel">
+            <a href="#nosotros" className="text-sm font-semibold text-cocoa/70 transition hover:text-caramel dark:text-white/70 dark:hover:text-brand-accent">
               Conoce Boni
             </a>
           </div>
-          <div className="mt-16 flex items-center gap-4 border-t border-cocoa/10 pt-5 text-xs text-cocoa/60">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-cocoa/15">
-              <ArrowDown size={15} />
+          <div className="mt-16 flex items-center gap-4 border-t border-cocoa/10 pt-5 text-xs text-cocoa/60 dark:border-white/10 dark:text-white/60">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-cocoa/15 dark:border-white/15">
+              <ArrowDown size={15} className="dark:text-white/60" />
             </span>
             Un buen día empieza con algo rico
           </div>

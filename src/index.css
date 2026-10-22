@@ -51,12 +51,86 @@
   --brand-taupe: #927D63;
   --brand-espresso: #332C26;
   --brand-card: #F3F1EA;
+  --brand-dark-bg: #0A0C10;
+  --brand-dark-card: #1A1D26;
+  --brand-dark-text: #E8E9EB;
+  --brand-dark-muted: #8E9199;
   color: var(--brand-primary);
   background: var(--brand-light);
   font-family: 'SF UI Display';
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root[data-theme="dark"] {
+  --brand-primary: #E8E9EB;
+  --brand-light: #0A0C10;
+  --brand-accent: #FF8E3C;
+  --brand-rose: #FFA8B6;
+  --brand-brass: #D4B483;
+  --brand-sand: #BCA786;
+  --brand-taupe: #A08C6D;
+  --brand-espresso: #C7B8A5;
+  --brand-card: #1A1D26;
+  color: var(--brand-dark-text);
+  background: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .app-header {
+  background-color: rgb(26 29 38 / 82%);
+  border-bottom-color: rgb(232 233 235 / 8%);
+}
+
+:root[data-theme="dark"] .menu-section {
+  background-color: rgb(26 29 38 / 76%);
+}
+
+:root[data-theme="dark"] .product-grid::before {
+  background:
+    radial-gradient(ellipse at 16% 16%, rgb(255 142 60 / 12%), transparent 54%),
+    radial-gradient(ellipse at 82% 72%, rgb(212 180 131 / 17%), transparent 57%);
+}
+
+:root[data-theme="dark"] .nav-link {
+  color: rgb(232 233 235 / 75%);
+}
+
+:root[data-theme="dark"] .nav-link:hover {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .mobile-search {
+  border: 1px solid rgb(232 233 235 / 12%);
+  background: var(--brand-dark-card);
+  box-shadow: 0 2px 8px rgb(10 12 16 / 20%);
+}
+
+:root[data-theme="dark"] .mobile-search input {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .mobile-search input::placeholder {
+  color: rgb(232 233 235 / 45%);
+}
+
+:root[data-theme="dark"] .branch-selector {
+  border: 1px solid rgb(232 233 235 / 15%);
+  background: var(--brand-dark-card);
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .branch-selector select {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .branch-selector-chevron {
+  color: rgb(232 233 235 / 55%);
+}
+
+:root[data-theme="dark"] .search-shortcut {
+  color: rgb(232 233 235 / 35%);
 }
 
 body {
@@ -1537,4 +1611,244 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+:root[data-theme="dark"] .category-filter {
+  border: 1px solid rgb(232 233 235 / 15%);
+  background: rgb(10 12 16 / 58%);
+  color: rgb(232 233 235 / 67%);
+}
+
+:root[data-theme="dark"] .category-filter:hover:not(.is-active) {
+  border-color: rgb(232 233 235 / 25%);
+  background: var(--brand-dark-bg);
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .category-filter.is-active {
+  border-color: var(--brand-dark-text);
+  background: var(--brand-dark-text);
+  color: var(--brand-dark-bg);
+  box-shadow: 0 3px 8px rgb(232 233 235 / 15%);
+}
+
+:root[data-theme="dark"] .menu-results-bar {
+  color: rgb(232 233 235 / 58%);
+}
+
+:root[data-theme="dark"] .menu-results-bar strong {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .menu-toolbar {
+  border-bottom-color: rgb(232 233 235 / 10%);
+}
+
+:root[data-theme="dark"] .menu-filter-heading {
+  color: rgb(232 233 235 / 70%);
+}
+
+:root[data-theme="dark"] .menu-sort {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .menu-sort-label {
+  color: rgb(232 233 235 / 48%);
+}
+
+:root[data-theme="dark"] .menu-sort select {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .menu-sort-chevron {
+  color: rgb(232 233 235 / 58%);
+}
+
+:root[data-theme="dark"] .product-card {
+  background: var(--brand-dark-card);
+  border-color: rgb(232 233 235 / 10%);
+}
+
+:root[data-theme="dark"] .product-info h3 {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .product-info > p {
+  color: rgb(232 233 235 / 72%);
+}
+
+:root[data-theme="dark"] .footer-heading {
+  color: var(--brand-espresso);
+}
+
+:root[data-theme="dark"] .social-icon {
+  border: 1px solid rgb(232 233 235 / 20%);
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .social-icon:hover {
+  border-color: var(--brand-dark-text);
+  background: var(--brand-dark-text);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .mobile-tabbar {
+  background: rgb(10 12 16 / 97%);
+  border-top: 1px solid rgb(232 233 235 / 10%);
+  box-shadow: 0 -5px 20px rgb(10 12 16 / 20%);
+}
+
+:root[data-theme="dark"] .mobile-tab {
+  color: rgb(232 233 235 / 58%);
+}
+
+:root[data-theme="dark"] .mobile-tab.is-active {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .product-detail-panel,
+:root[data-theme="dark"] .product-detail-content,
+:root[data-theme="dark"] .product-detail-actions,
+:root[data-theme="dark"] .drawer-panel {
+  background: var(--brand-dark-card);
+}
+
+:root[data-theme="dark"] .detail-title-row h2,
+:root[data-theme="dark"] .detail-ingredients h3 {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .detail-description {
+  color: rgb(232 233 235 / 72%);
+}
+
+:root[data-theme="dark"] .detail-facts span {
+  color: rgb(232 233 235 / 75%);
+}
+
+:root[data-theme="dark"] .ingredient-list span {
+  border: 1px solid rgb(232 233 235 / 12%);
+  background: var(--brand-dark-card);
+  color: rgb(232 233 235 / 78%);
+}
+
+:root[data-theme="dark"] .detail-ingredients > p {
+  color: rgb(232 233 235 / 52%);
+}
+
+:root[data-theme="dark"] .quantity-control {
+  border: 1px solid rgb(232 233 235 / 18%);
+  background: var(--brand-dark-card);
+}
+
+:root[data-theme="dark"] .quantity-control button {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .quantity-control button:hover:not(:disabled) {
+  background: var(--brand-dark-text);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .quantity-control button:disabled {
+  color: rgb(232 233 235 / 30%);
+}
+
+:root[data-theme="dark"] .detail-confirm {
+  background: var(--brand-dark-text);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .detail-confirm:hover {
+  background: var(--brand-accent);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .detail-confirm.detail-remove {
+  border: 1px solid rgb(232 233 235 / 15%);
+  background: var(--brand-dark-card);
+  color: var(--brand-dark-text);
+}
+
+
+/* Reglas adicionales para dark mode */
+:root[data-theme="dark"] .app-header {
+  border-bottom-color: rgb(232 233 235 / 8%);
+}
+
+:root[data-theme="dark"] .branch-selector-pin {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .branch-selector-label {
+  color: rgb(232 233 235 / 50%);
+}
+
+:root[data-theme="dark"] .section-title {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .product-card-price,
+:root[data-theme="dark"] .detail-price,
+:root[data-theme="dark"] .cart-item-total,
+:root[data-theme="dark"] .cart-order-total {
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .product-card-price small,
+:root[data-theme="dark"] .detail-price small,
+:root[data-theme="dark"] .cart-item-total small,
+:root[data-theme="dark"] .cart-order-total small {
+  color: rgb(232 233 235 / 57%);
+}
+
+:root[data-theme="dark"] .cart-rate-note {
+  color: rgb(232 233 235 / 62%);
+}
+
+:root[data-theme="dark"] .cart-rate-note a {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .product-card-order {
+  background: var(--brand-dark-text);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .product-card-order:hover {
+  background: var(--brand-accent);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .featured-badge {
+  background: var(--brand-brass);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .eyebrow {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .detail-category {
+  color: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .detail-confirm {
+  background: var(--brand-dark-text);
+  color: var(--brand-dark-bg);
+}
+
+:root[data-theme="dark"] .detail-confirm:hover {
+  background: var(--brand-accent);
+}
+
+:root[data-theme="dark"] .menu-sort select option {
+  background: var(--brand-dark-card);
+  color: var(--brand-dark-text);
+}
+
+:root[data-theme="dark"] .branch-selector select option {
+  background: var(--brand-dark-card);
+  color: var(--brand-dark-text);
 }
