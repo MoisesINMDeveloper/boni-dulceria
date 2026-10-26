@@ -163,7 +163,7 @@ export default function Hero({ branchId, branchName }) {
       aria-roledescription="carrusel de productos destacados"
     >
       <div
-        className="mobile-promo mx-4 mt-3 overflow-hidden rounded-[22px] bg-cocoa text-white"
+        className="mobile-promo mx-4 mt-3 overflow-hidden rounded-[22px] bg-cocoa text-white dark:bg-brand-dark-card"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onFocusCapture={() => setHasFocus(true)}

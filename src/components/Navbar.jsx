@@ -27,9 +27,12 @@ export default function Navbar({ branchId, onChangeBranch, cartCount, onOpenCart
               type="button"
               onClick={onOpenCart}
               aria-label={`Abrir carrito, ${cartCount} productos`}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-cocoa/10 bg-white/70 text-cocoa transition hover:border-cocoa hover:bg-white dark:border-white/10 dark:bg-brand-dark-card/70 dark:text-white dark:hover:border-white dark:hover:bg-brand-dark-card"
+              className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-cocoa/10 bg-white/70 text-cocoa transition hover:border-cocoa hover:bg-white dark:border-white/10 dark:bg-brand-dark-card/70 dark:text-white dark:hover:border-white dark:hover:bg-brand-dark-card"
             >
               <ShoppingBag size={18} strokeWidth={1.7} />
+              <span className="absolute -right-1 -top-1 flex h-[19px] min-w-[19px] items-center justify-center rounded-full bg-caramel px-1 text-[10px] font-bold text-white">
+                {cartCount}
+              </span>
             </button>
           </div>
         </div>
@@ -64,9 +67,12 @@ export default function Navbar({ branchId, onChangeBranch, cartCount, onOpenCart
             type="button"
             onClick={onOpenCart}
             aria-label={`Abrir carrito, ${cartCount} productos`}
-            className="h-11 w-11 items-center justify-center rounded-full border border-cocoa/10 bg-white/70 text-cocoa transition hover:border-cocoa hover:bg-white inline-flex dark:border-white/10 dark:bg-brand-dark-card/70 dark:text-white dark:hover:border-white dark:hover:bg-brand-dark-card"
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-cocoa/10 bg-white/70 text-cocoa transition hover:border-cocoa hover:bg-white dark:border-white/10 dark:bg-brand-dark-card/70 dark:text-white dark:hover:border-white dark:hover:bg-brand-dark-card"
           >
             <ShoppingBag size={19} strokeWidth={1.7} />
+            <span className="absolute -right-1 -top-1 flex h-[19px] min-w-[19px] items-center justify-center rounded-full bg-caramel px-1 text-[10px] font-bold text-white">
+              {cartCount}
+            </span>
           </button>
         </div>
       </nav>

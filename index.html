@@ -14,6 +14,17 @@
       href="/src/LOGOTIPO/PNG/logotipo principal BONI DULCERIA-08.png"
     />
     <title>Boni Dulcería — Un rincón para disfrutar</title>
+    <script>
+      // Apply the saved or system theme before the first paint to avoid a flash.
+      try {
+        const savedTheme = localStorage.getItem('boni-theme')
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1A1D26')
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
