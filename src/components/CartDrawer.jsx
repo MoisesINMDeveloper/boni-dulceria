@@ -1,7 +1,8 @@
 import { Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { getWhatsAppUrl } from '../data/contact.js'
 import { formatBcvDate, formatBolivares } from '../data/exchangeRate.js'
+import { useModalDialog } from '../hooks/useModalDialog.js'
 
 const money = (value) => `$${value.toFixed(2)}`
 
@@ -14,20 +15,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
     return bolivares ? `${money(amount)} / ${bolivares}` : money(amount)
   }
 
-  useEffect(() => {
-    if (!isOpen) return undefined
-
-    const closeOnEscape = (event) => {
-      if (event.key === 'Escape') onClose()
-    }
-    document.addEventListener('keydown', closeOnEscape)
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.removeEventListener('keydown', closeOnEscape)
-      document.body.style.overflow = ''
-    }
-  }, [isOpen, onClose])
+  const dialogRef = useModalDialog(isOpen, onClose)
 
   const checkout = () => {
     if (cart.length === 0) return
@@ -59,10 +47,13 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
       <button
         type="button"
         aria-label="Cerrar carrito"
+        tabIndex={-1}
         onClick={onClose}
-        className="absolute inset-0 h-full w-full cursor-default bg-cocoa/45 backdrop-blur-[2px]"
+        className="absolute inset-0 h-full w-full bg-cocoa/45 backdrop-blur-[2px] dark:bg-black/60"
       />
       <aside
+        ref={dialogRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-labelledby="cart-title"
@@ -78,7 +69,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
             type="button"
             aria-label="Cerrar carrito"
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-latte"
+            className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-latte dark:hover:bg-white/10"
           >
             <X size={20} />
           </button>
@@ -86,12 +77,12 @@ export default function CartDrawer({ isOpen, onClose, cart, onChangeQuantity, on
 
         {cart.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-            <span className="flex h-20 w-20 items-center justify-center rounded-full bg-latte text-cocoa">
+            <span className="flex h-20 w-20 items-center justify-center rounded-full bg-latte text-cocoa dark:bg-white/10">
               <ShoppingBag size={28} strokeWidth={1.4} />
             </span>
             <h3 className="mt-6 font-display text-2xl text-cocoa">Todavía está vacío</h3>
             <p className="mt-2 text-sm leading-6 text-cocoa/60">Tu próximo antojo favorito te está esperando en el menú.</p>
-            <button type="button" onClick={onClose} className="mt-6 rounded-full bg-cocoa px-6 py-3 text-sm font-semibold text-white hover:bg-caramel">
+            <button type="button" onClick={onClose} className="mt-6 rounded-full bg-cocoa px-6 py-3 text-sm font-semibold text-white hover:bg-caramel dark:bg-white dark:text-black dark:hover:bg-brand-accent">
               Explorar el menú
             </button>
           </div>

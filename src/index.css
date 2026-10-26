@@ -140,6 +140,31 @@ body {
   min-width: 320px;
 }
 
+/* Tailwind's preflight resets buttons to the default cursor; restore it for everything clickable. */
+a[href],
+button:not(:disabled),
+[role='button'],
+select:not(:disabled),
+summary,
+.product-card {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
+}
+
+.mobile-search:focus-within {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgb(179 87 24 / 18%);
+}
+
 .app-header {
   background-color: rgb(243 241 234 / 82%);
   background-image: none;
