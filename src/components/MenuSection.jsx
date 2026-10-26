@@ -2,7 +2,14 @@ import { ArrowDownWideNarrow, ChevronDown, SlidersHorizontal } from 'lucide-reac
 import { useEffect, useState } from 'react'
 import { categories, products } from '../data/products.js'
 import { formatBolivares } from '../data/exchangeRate.js'
+import Dropdown from './Dropdown.jsx'
 import ProductDetailModal from './ProductDetailModal.jsx'
+
+const sortOptions = [
+  { value: 'featured', label: 'Recomendados' },
+  { value: 'price-asc', label: 'Precio: menor a mayor' },
+  { value: 'price-desc', label: 'Precio: mayor a menor' },
+]
 
 function ProductCard({ product, bcvRate, onAdd, onOpenDetails }) {
   return (
@@ -137,22 +144,24 @@ export default function MenuSection({ branchId, bcvRate, onAdd, onSetQuantity, q
             <p aria-live="polite">
               <strong>{visibleProducts.length}</strong> {visibleProducts.length === 1 ? 'producto' : 'productos'}
             </p>
-            <label className="menu-sort">
-              <ArrowDownWideNarrow size={15} aria-hidden="true" />
-              <span className="menu-sort-copy">
-                <span className="menu-sort-label">Ordenar por</span>
-                <select
-                  aria-label="Ordenar productos"
-                  value={sortOrder}
-                  onChange={(event) => setSortOrder(event.target.value)}
-                >
-                  <option value="featured">Recomendados</option>
-                  <option value="price-asc">Precio: menor a mayor</option>
-                  <option value="price-desc">Precio: mayor a menor</option>
-                </select>
-              </span>
-              <ChevronDown size={13} className="menu-sort-chevron" aria-hidden="true" />
-            </label>
+            <Dropdown
+              className="menu-sort"
+              label="Ordenar productos"
+              value={sortOrder}
+              options={sortOptions}
+              onChange={setSortOrder}
+            >
+              {(selectedSort) => (
+                <>
+                  <ArrowDownWideNarrow size={15} aria-hidden="true" />
+                  <span className="menu-sort-copy" aria-hidden="true">
+                    <span className="menu-sort-label">Ordenar por</span>
+                    <span className="menu-sort-value">{selectedSort?.label}</span>
+                  </span>
+                  <ChevronDown size={13} className="menu-sort-chevron" aria-hidden="true" />
+                </>
+              )}
+            </Dropdown>
           </div>
         </div>
         <div className="product-grid mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
