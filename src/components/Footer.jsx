@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <>
       <section id="nosotros" className="bg-cream px-5 py-24 sm:px-8 sm:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 rounded-[28px] bg-cocoa px-7 py-10 text-cream sm:px-12 sm:py-14 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div className="mx-auto grid max-w-7xl gap-10 rounded-[28px] bg-cocoa px-7 py-10 text-cream dark:bg-brand-dark-card dark:text-white sm:px-12 sm:py-14 lg:grid-cols-[1fr_auto] lg:items-center">
           <div className="max-w-2xl">
             <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brass">Un poquito de Boni</p>
             <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">El sabor de lo hecho con calma.</h2>

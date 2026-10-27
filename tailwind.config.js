@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#DBDBD3',
-        cocoa: '#1C1F2A',
+        // Theme-aware: these flip with [data-theme="dark"] via the --brand-* variables.
+        cream: 'var(--brand-light)',
+        cocoa: 'var(--brand-primary)',
         caramel: '#B35718',
         latte: '#BCA786',
         rose: '#CC8189',
@@ -13,6 +14,8 @@ export default {
         taupe: '#927D63',
         espresso: '#332C26',
         surface: 'var(--brand-card)',
+        'brand-accent': 'var(--brand-accent)',
+        'brand-dark-card': 'var(--brand-dark-card)',
       },
       fontFamily: {
         sans: ['SF UI Display'],

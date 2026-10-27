@@ -2,6 +2,7 @@ import { ArrowLeft, Check, Clock3, Minus, Plus, ShoppingBag, X } from 'lucide-re
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { formatBolivares } from '../data/exchangeRate.js'
+import { useModalDialog } from '../hooks/useModalDialog.js'
 
 const money = (value) => `$${value.toFixed(2)}`
 
@@ -35,19 +36,7 @@ export default function ProductDetailModal({ product, quantityInCart, bcvRate, o
     setQuantity(quantityInCart || 1)
   }, [product.id, quantityInCart])
 
-  useEffect(() => {
-    const closeOnEscape = (event) => {
-      if (event.key === 'Escape') onClose()
-    }
-
-    document.addEventListener('keydown', closeOnEscape)
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.removeEventListener('keydown', closeOnEscape)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
+  const dialogRef = useModalDialog(true, onClose)
 
   const handleConfirm = () => {
     onConfirm(product, quantity)
@@ -60,9 +49,12 @@ export default function ProductDetailModal({ product, quantityInCart, bcvRate, o
         type="button"
         aria-label="Cerrar detalles del producto"
         className="product-modal-backdrop"
+        tabIndex={-1}
         onClick={onClose}
       />
       <section
+        ref={dialogRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-labelledby="product-detail-title"
