@@ -8,7 +8,7 @@ export default function Navbar({ branchId, onChangeBranch, cartCount, onOpenCart
     <header className="app-header fixed inset-x-0 top-0 z-40 border-b border-cocoa/5 bg-cream/85 backdrop-blur-lg dark:border-white/5 dark:bg-brand-dark-card/85">
       <nav
         aria-label="Navegación principal"
-        className="mx-auto flex max-w-7xl flex-col justify-center gap-2 px-4 py-3 sm:px-8 md:h-[76px] md:flex-row md:items-center md:justify-between         md:gap-0 md:py-0"
+        className="mx-auto flex max-w-7xl flex-col justify-center gap-2 px-4 py-1 sm:px-8 md:h-[76px] md:flex-row md:items-center md:justify-between         md:gap-0 md:py-0"
       >
         <div className="flex items-center justify-between gap-3">
           <a href="#inicio" className="group flex min-w-0 items-center gap-3" aria-label="Boni Dulcería, inicio">
