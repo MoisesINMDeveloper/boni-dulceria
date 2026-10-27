@@ -14,8 +14,19 @@
       href="/boni-dulceria/assets/logotipo%20principal%20BONI%20DULCERIA-08-C4P6FZgA.png"
     />
     <title>Boni Dulcería — Un rincón para disfrutar</title>
-    <script type="module" crossorigin src="/boni-dulceria/assets/index-CHGwkKGA.js"></script>
-    <link rel="stylesheet" crossorigin href="/boni-dulceria/assets/index-DRARU5w5.css">
+    <script>
+      // Apply the saved or system theme before the first paint to avoid a flash.
+      try {
+        const savedTheme = localStorage.getItem('boni-theme')
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#1A1D26')
+        }
+      } catch {}
+    </script>
+    <script type="module" crossorigin src="/boni-dulceria/assets/index-CTPC9qFy.js"></script>
+    <link rel="stylesheet" crossorigin href="/boni-dulceria/assets/index-McgkNU66.css">
   </head>
   <body>
     <div id="root"></div>
